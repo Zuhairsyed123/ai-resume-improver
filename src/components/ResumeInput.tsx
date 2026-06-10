@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, FileText, ChevronDown, CheckCircle2, FileJson } from 'lucide-react';
+import { Upload, FileText, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { extractTextFromPDF } from '../utils/pdfParser';
 
 interface ResumeInputProps {
@@ -17,7 +17,7 @@ const ROLES = [
   'Sales Representative',
   'Customer Success Manager',
   'Human Resources',
-  'Other'
+  'AIML'
 ];
 
 export const ResumeInput: React.FC<ResumeInputProps> = ({ onAnalyze, isLoading }) => {

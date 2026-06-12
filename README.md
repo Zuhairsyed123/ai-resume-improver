@@ -1,6 +1,6 @@
 # AI Resume Improver
 
-🚀 **Live Demo:** Deployed via GitHub Pages
+ **Live Demo:** Deployed via GitHub Pages
 
 AI Resume Improver is an AI-powered web application that analyzes resumes and provides actionable insights to enhance their quality and effectiveness. It generates an ATS score based on keyword relevance, formatting, and overall impact, helping users understand how well their resume performs in modern hiring systems. The platform offers structured feedback, highlights strengths and weaknesses, and suggests improvements. It also features an AI-based bullet point optimizer and a “Recruiter POV” mode that simulates real hiring decisions. Designed for students and professionals, the tool helps create strong, optimized resumes and improves chances of getting shortlisted.
 

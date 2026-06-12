@@ -15,8 +15,8 @@ Before writing any code, we selected modern, industry-standard tools to build th
 - **Tailwind CSS (v4):** A utility-first CSS framework that lets you style your application directly inside your HTML/JSX without writing separate CSS files.
 - **Framer Motion:** A powerful animation library for React that makes it easy to create smooth, beautiful animations.
 - **Lucide React:** A beautiful, open-source icon library.
-- **PDF.js:** A tool by Mozilla used to parse and read the text inside uploaded PDF resumes directly in the browser.
-- **Surge (surge.sh):** A free static web publishing platform that allows you to deploy web applications directly from your terminal.
+- **pdfjs-dist:** A library based on Mozilla PDF.js used to parse and read the text inside uploaded PDF resumes directly in the browser.
+- **GitHub Pages:** The hosting service used to publish the built app from the `dist` folder.
 
 ---
 
@@ -43,12 +43,12 @@ npm install tailwindcss @tailwindcss/vite lucide-react framer-motion axios pdfjs
 
 ### Step 2.3: Project Structure
 We organized our code into a clear folder structure inside the `src` directory:
-- `src/components/`: Contains our React UI building blocks like `ResumeInput.tsx` (where users upload PDFs) and `ResultsDashboard.tsx` (where the analysis is shown).
+- `src/components/`: Contains our React UI building blocks like `ResumeInput.tsx` (where users upload PDFs or paste resume text) and `ResultsDashboard.tsx` (where the analysis is shown).
 - `src/utils/`: Contains helper functions, specifically `pdfParser.ts` which handles extracting text from the PDF file.
 - `src/App.tsx`: The main container that brings all components together.
 
 ### Step 2.4: Developing the Features
-1. **PDF Parsing:** We used `pdfjs-dist` to read the uploaded PDF file byte-by-byte and convert it into a plain text string.
+1. **PDF Upload & Parsing:** Users can upload a resume in PDF format, and the app uses `pdfjs-dist` to parse it in the browser. If the uploaded file is not a PDF, the app shows a friendly error, and users may also paste their resume text manually as an alternative.
 2. **User Interface:** We built forms and buttons using standard HTML elements styled beautifully with Tailwind CSS. For example, instead of writing `margin-top: 10px; color: blue;`, we simply added classes like `mt-2 text-blue-500`.
 3. **State Management:** We used React's `useState` hook to keep track of whether the application is loading, what errors exist, and the final parsed resume text.
 
@@ -73,20 +73,23 @@ npm run build
 ```
 This command successfully generated a `dist` (distribution) folder containing the final, ready-to-publish website files.
 
-### Step 3.2: Deploying with Surge
-To host the `dist` folder on the internet for free, we used **Surge.sh**.
+### Step 3.2: Deploying to GitHub Pages
+To publish the site on GitHub Pages, we used the `gh-pages` package and the deploy script already configured in `package.json`.
 
-1. We used `npx` (Node Package Execute) to run Surge directly on our `dist` folder:
+1. Make sure the app is built for production:
    ```bash
-   npx surge ./dist
+   npm run build
    ```
-2. Surge prompted us to create an account by simply entering an **email** and a **password**.
-3. It then asked us for a **domain name**. We provided a unique name: `resume-analyser-zuhair123.surge.sh`.
-4. Surge securely uploaded the 6 optimized files (HTML, JS, CSS, and assets) from our `dist` folder to their globally distributed servers.
+2. Then publish the `dist` folder to GitHub Pages:
+   ```bash
+   npm run deploy
+   ```
 
-Within a few seconds, Surge provided the live link: **https://resume-analyser-zuhair123.surge.sh**
+This deploy command uses `gh-pages -d dist` to push the compiled files into a `gh-pages` branch and serve them from your GitHub Pages site.
+
+> Note: The repository must be connected to GitHub, and GitHub Pages should be enabled for the `gh-pages` branch in your repository settings.
 
 ---
 
 ## Conclusion
-By combining Vite for fast development, React for UI components, Tailwind for styling, and Surge for instant deployment, we built and launched a modern web application incredibly quickly. As a student, mastering this exact workflow will give you the superpower to turn your ideas into live products in a matter of minutes!
+By combining Vite for fast development, React for UI components, Tailwind for styling, and GitHub Pages for deployment, we built and launched a modern web application quickly and hosted it on GitHub's free static site service. As a student, mastering this exact workflow will let you ship live projects directly from your repository with minimal effort.
